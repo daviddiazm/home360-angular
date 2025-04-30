@@ -4,14 +4,13 @@ import { AppHomeComponent } from './app-home/app-home.component';
 import { CreateCategoriesComponent } from './create-categories/create-categories.component';
 
 
-
 @NgModule({
   declarations: [
     AppHomeComponent,
     CreateCategoriesComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ]
 })
 export class PagesModule { }
