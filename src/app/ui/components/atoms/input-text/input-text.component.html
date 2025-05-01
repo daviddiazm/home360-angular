@@ -1,0 +1,15 @@
+<label class="input-text__label" [attr.for]="label">
+  <h4 class="input-text__label-title">
+    {{ label }}
+    <span *ngIf="required" class="input-text__required">*</span>
+  </h4>
+  <input
+    class="input-text__input"
+    [placeholder]="placeholder"
+    type="text"
+    [value]="value"
+    [required]="required"
+    [attr.aria-required]="required"
+    [attr.aria-label]="label"
+  >
+</label>
