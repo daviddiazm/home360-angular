@@ -1,16 +1,15 @@
 .side-bar {
   position: relative;
-  width: 250px;
+  // width: 250px;
+  width: 0px;
   height: 100vh;
   background-color: var(--white);
-  // background-color: var(--gray);
   color: var(--gray);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 0px;
   border-radius: 5px;
-  margin: 5px 5px 5px 0px;
 
   &__toggle-btn {
     position: relative;
@@ -30,6 +29,7 @@
   }
 
   &__nav {
+    overflow: hidden;
     margin-top: 1rem;
     flex-grow: 1;
   }

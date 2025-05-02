@@ -6,10 +6,16 @@
   <input
     class="input-text__input"
     [placeholder]="placeholder"
-    type="text"
     [value]="value"
     [required]="required"
     [attr.aria-required]="required"
     [attr.aria-label]="label"
+    [disabled]="isDisabled"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+    type="text"
   >
+  <span>
+    {{errorMessage}}
+  </span>
 </label>

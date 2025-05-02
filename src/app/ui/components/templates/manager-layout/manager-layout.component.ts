@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OrganismsModule } from "../../organisms/organisms.module";
 
 @Component({
   selector: 'app-manager-layout',
