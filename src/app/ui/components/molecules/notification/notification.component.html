@@ -1,0 +1,9 @@
+<div @fadeInOut *ngIf="isVisible" class="notification" [ngClass]="notificationClass">
+  <div class="notification-content">
+    <span class="notification-message">{{message}}</span>
+    <button class="notification-close" (click)="isVisible = false">×</button>
+  </div>
+  <div class="notification-progress">
+    <div class="progress-bar" [style.width.%]="progressWidth"></div>
+  </div>
+</div>
