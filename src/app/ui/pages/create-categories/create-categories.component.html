@@ -1,38 +1,42 @@
 <section class="create-categories">
   <section class="create-categories__form-section">
-  <h2 class="create-categories__title">Crear categorías</h2>
-  <form class="create-categories__form" action="" [formGroup]="categoryForm">
-    <app-input-text
-      label="Nombre de la categoría"
-      placeholder="Escribe el nombre de la categoria"
-      [required]="true"
-      formControlName="name"
-      [errorMessage]="getFiledError('name')"
-    ></app-input-text>
-    <label class="create-categories__label" for="">
-      <h4 class="create-categories__label-title">Descripción de la categoría</h4>
-      <textarea
-        class="create-categories__input"
-        name="textarea"
-        rows="6"
-        cols="50"
+    <h2 class="create-categories__title">Crear categorías</h2>
+    <form class="create-categories__form" action="" [formGroup]="categoryForm" (ngSubmit)="onSave()" >
+      <app-input-text
+        label="Nombre de la categoría"
+        placeholder="Escribe el nombre de la categoria"
+        [required]="true"
+        formControlName="name"
+        [errorMessage]="FormUtils.getFiledError(categoryForm, 'name')">
+      </app-input-text>
+
+      <app-text-area
+        label="Descripción de la categoría"
         placeholder="Escribe la descripcion de la categoria"
-      ></textarea>
-    </label>
-    <div class="create-categories__submit">
-      <app-button-submit value="Guardar"></app-button-submit>
-    </div>
-  </form>
-</section>
+        formControlName="description"
+        [required]="true"
+        [errorMessage]="FormUtils.getFiledError(categoryForm, 'description')">
+      </app-text-area>
 
-<pre>{{ categoryForm.value | json }}</pre>
-<pre>{{ categoryForm.get('name')?.errors | json }}</pre>
+      <div *ngIf="isCategorySave">
+        <app-notification message="Datos guardados correctamente" type="success"></app-notification>
+      </div>
 
+      <div class="create-categories__submit">
+        <app-button-submit value="Guardar"></app-button-submit>
+      </div>
+    </form>
+  </section>
+
+  <pre>{{ categoryForm.value | json }}</pre>
+  <pre>{{ categoryForm.get('name')?.errors | json }}</pre>
+
+  <!-- <pre>{{category$ | async | json }}</pre> -->
 
   <section class="create-categories__list-section">
     <h2 class="create-categories__title">Lista de categorías</h2>
     <div class="create-categories__table-container">
-      <section class="create-categories__table" *ngIf="categories$ | async as categoriesPage" >
+      <section class="create-categories__table" *ngIf="categories$ | async as categoriesPage">
         <section class="create-categories__table-header">
           <h5 class="create-categories__column-title">ID</h5>
           <h5 class="create-categories__column-title">Nombre</h5>
@@ -40,15 +44,19 @@
           <h5 class="create-categories__column-title">Acciones</h5>
         </section>
         <section class="create-categories__table-body">
-          <article class="create-categories__row" *ngFor="let category of categoriesPage.content" >
+          <article class="create-categories__row" *ngFor="let category of categoriesPage.content">
             <p class="create-categories__cell"> {{ category.id }} </p>
             <p class="create-categories__cell"> {{ category.name }} </p>
             <p class="create-categories__cell"> {{ category.description }} </p>
             <i class="create-categories__actions"></i>
           </article>
         </section>
+        <section class="create-categories__page-selection">
+          <!-- <button class="create-categories__simple-btn" *ngFor="let page of categoriesPage.totalPages " >
+            {{}}
+          </button> -->
+        </section>
       </section>
-
     </div>
   </section>
 </section>

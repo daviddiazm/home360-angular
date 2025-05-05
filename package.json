@@ -9,6 +9,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:coverage": "jest --coverage --coverageReporters=text",
+    "test:coverage-html": "jest --coverage --coverageReporters=\"text-summary\" --coverageReporters=\"html\"",
     "test:staged": "jest --coverage --build --findRelatedTests --passWithNoTests"
   },
   "private": true,

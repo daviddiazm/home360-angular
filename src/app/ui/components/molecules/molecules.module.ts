@@ -6,7 +6,6 @@ import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
-
     NotificationComponent
   ],
   imports: [

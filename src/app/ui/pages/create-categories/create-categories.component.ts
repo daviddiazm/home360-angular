@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, MinValidator, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, MinValidator, ValidationErrors, Validators } from '@angular/forms';
+import { map, Observable } from 'rxjs';
 import { Category } from 'src/app/core/models/category.interfaces';
 import { Page } from 'src/app/core/models/page.interface';
 import { CategoriesService } from 'src/app/core/services/categories.service';
+import { FormUtils } from '../../../shared/utils/form-util';
+import { uniqueCategoryNameValidator } from 'src/app/shared/utils/categoryFormUtils';
 
 @Component({
   selector: 'app-create-categories',
@@ -12,8 +14,12 @@ import { CategoriesService } from 'src/app/core/services/categories.service';
 })
 export class CreateCategoriesComponent {
 
-  categories$!: Observable<Page<Category>>;
+  FormUtils = FormUtils
 
+  categories$!: Observable<Page<Category>>;
+  category$?:Observable<Category>
+
+  isCategorySave = true
   currentPage = 0;
   pageSize = 10;
   orderAsc = true;
@@ -24,34 +30,47 @@ export class CreateCategoriesComponent {
   ) {}
 
   categoryForm: FormGroup = this.fb.group({
-    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
+    name:
+      ['',
+        [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
+        [uniqueCategoryNameValidator(this.categoriesService)]
+      ],
     description: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(90)]]
   })
 
   ngOnInit(): void {
     this.loadCategories();
+    this.category$ = this.categoriesService.getCategoryByName("barrio")
   }
 
-  getFiledError(controlName: string): string | null {
-    if( !this.categoryForm.controls[controlName] ) return null
-    if( !this.categoryForm.controls[controlName].touched ) return null
-    const errors = this.categoryForm.controls[controlName].errors ?? {}
-    for( const key of Object.keys(errors) ) {
-      switch(key) {
-        case "required" :
-          return "el campo es requerido"
-        case "minlength":
-          return `ingresar un minimo de ${ errors["minlength"].requiredLength } caracteres`
-      }
+  onSave() {
+    if(this.categoryForm.invalid) {
+      this.categoryForm.markAllAsTouched();
+    } else {
+      this.createCategory(this.categoryForm.get("name")?.value, this.categoryForm.get("description")?.value)
     }
-    return null
   }
 
-  loadCategories(): void {
+  private createCategory(name:  string , description: string) {
+    this.categoriesService.postCategory(name, description).subscribe({
+      next: () => {
+        this.categoryForm.reset();
+        this.loadCategories();
+        this.isCategorySave = true
+      },
+      error: (err) => {
+        console.error('Error creating category:', err);
+      }
+    });
+  }
+
+  private loadCategories(): void {
     this.categories$ = this.categoriesService.getCategoriesByPage(
       this.currentPage,
       this.pageSize,
       this.orderAsc
     );
   }
+
+
 }
