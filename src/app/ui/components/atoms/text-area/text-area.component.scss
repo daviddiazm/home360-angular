@@ -1,0 +1,16 @@
+.text-area {
+  &__label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__input {
+    padding: 10px;
+    border: 1px solid var(--white-ligth-smoke);
+    border-radius: 8px;
+  }
+  &__span {
+    color: var(--red);
+  }
+}
