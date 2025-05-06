@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, MinValidator, ValidationErrors, Validators } from '@angular/forms';
-import { map, Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { Category } from 'src/app/core/models/category.interfaces';
 import { Page } from 'src/app/core/models/page.interface';
 import { CategoriesService } from 'src/app/core/services/categories.service';
@@ -16,10 +16,10 @@ export class CreateCategoriesComponent {
 
   FormUtils = FormUtils
 
-  categories$!: Observable<Page<Category>>;
-  category$?:Observable<Category>
+  categoriesPage$!: Observable<Page<Category>>;
+  pageNumbers: number[] = [];
 
-  isCategorySave = true
+  isCategorySave = false
   currentPage = 0;
   pageSize = 10;
   orderAsc = true;
@@ -27,7 +27,7 @@ export class CreateCategoriesComponent {
   constructor(
     private categoriesService: CategoriesService,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   categoryForm: FormGroup = this.fb.group({
     name:
@@ -40,18 +40,19 @@ export class CreateCategoriesComponent {
 
   ngOnInit(): void {
     this.loadCategories();
-    this.category$ = this.categoriesService.getCategoryByName("barrio")
   }
 
   onSave() {
-    if(this.categoryForm.invalid) {
+    if (this.categoryForm.invalid) {
       this.categoryForm.markAllAsTouched();
     } else {
-      this.createCategory(this.categoryForm.get("name")?.value, this.categoryForm.get("description")?.value)
+      const name = this.categoryForm.get("name")?.value
+      const description = this.categoryForm.get("description")?.value
+      this.createCategory(name, description)
     }
   }
 
-  private createCategory(name:  string , description: string) {
+  createCategory(name: string, description: string) {
     this.categoriesService.postCategory(name, description).subscribe({
       next: () => {
         this.categoryForm.reset();
@@ -64,13 +65,25 @@ export class CreateCategoriesComponent {
     });
   }
 
-  private loadCategories(): void {
-    this.categories$ = this.categoriesService.getCategoriesByPage(
+  loadCategories(): void {
+    this.categoriesPage$ = this.categoriesService.getCategoriesByPage(
       this.currentPage,
       this.pageSize,
       this.orderAsc
-    );
+    ).pipe(
+      map(page => {
+        this.pageNumbers = [];
+        for (let i = 0; i < page.totalPages; i++) {
+          this.pageNumbers.push(i);
+        }
+        return page;
+      })
+    )
   }
 
+  goToPage(pageNumber: number): void {
+    this.currentPage = pageNumber;
+    this.loadCategories();
+  }
 
 }

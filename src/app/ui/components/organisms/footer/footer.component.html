@@ -1,1 +1,17 @@
-<p>footer works!</p>
+<footer class="footer-app">
+  <section class="footer-app__redirects" >
+    <article class="footer-app__article">
+      <h5>Hogar360</h5>
+      <p>Tu partner en la búsqueda del espacio perfecto.</p>
+    </article>
+    <app-article-ancord
+      *ngFor="let item of listRedirects"
+      [title]="item.tile"
+      [itemList]="item.items"
+      [isRow]="item.isRow" >
+    </app-article-ancord>
+  </section>
+  <section class="footer-app__rights" >
+    <p>© 2025 Hogar360. All rights reserved.</p>
+  </section>
+</footer>

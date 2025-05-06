@@ -18,4 +18,19 @@ describe('NotificationComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should return "green" class for success type', () => {
+    component.type = 'success';
+    expect(component.getColorClass()).toBe('green');
+  });
+
+  it('should return "yellow" class for warning type', () => {
+    component.type = 'warning';
+    expect(component.getColorClass()).toBe('yellow');
+  });
+
+  it('should return "red" class for error type', () => {
+    component.type = 'error';
+    expect(component.getColorClass()).toBe('red');
+  });
 });

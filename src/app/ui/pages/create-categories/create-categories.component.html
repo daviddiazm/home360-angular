@@ -1,20 +1,13 @@
 <section class="create-categories">
   <section class="create-categories__form-section">
     <h2 class="create-categories__title">Crear categorías</h2>
-    <form class="create-categories__form" action="" [formGroup]="categoryForm" (ngSubmit)="onSave()" >
-      <app-input-text
-        label="Nombre de la categoría"
-        placeholder="Escribe el nombre de la categoria"
-        [required]="true"
-        formControlName="name"
-        [errorMessage]="FormUtils.getFiledError(categoryForm, 'name')">
+    <form class="create-categories__form" action="" [formGroup]="categoryForm" (ngSubmit)="onSave()">
+      <app-input-text label="Nombre de la categoría" placeholder="Escribe el nombre de la categoria" [required]="true"
+        formControlName="name" [errorMessage]="FormUtils.getFiledError(categoryForm, 'name')">
       </app-input-text>
 
-      <app-text-area
-        label="Descripción de la categoría"
-        placeholder="Escribe la descripcion de la categoria"
-        formControlName="description"
-        [required]="true"
+      <app-text-area label="Descripción de la categoría" placeholder="Escribe la descripcion de la categoria"
+        formControlName="description" [required]="true"
         [errorMessage]="FormUtils.getFiledError(categoryForm, 'description')">
       </app-text-area>
 
@@ -28,15 +21,10 @@
     </form>
   </section>
 
-  <pre>{{ categoryForm.value | json }}</pre>
-  <pre>{{ categoryForm.get('name')?.errors | json }}</pre>
-
-  <!-- <pre>{{category$ | async | json }}</pre> -->
-
   <section class="create-categories__list-section">
     <h2 class="create-categories__title">Lista de categorías</h2>
     <div class="create-categories__table-container">
-      <section class="create-categories__table" *ngIf="categories$ | async as categoriesPage">
+      <section class="create-categories__table" *ngIf="categoriesPage$ | async as categoriesPage">
         <section class="create-categories__table-header">
           <h5 class="create-categories__column-title">ID</h5>
           <h5 class="create-categories__column-title">Nombre</h5>
@@ -51,12 +39,16 @@
             <i class="create-categories__actions"></i>
           </article>
         </section>
-        <section class="create-categories__page-selection">
-          <!-- <button class="create-categories__simple-btn" *ngFor="let page of categoriesPage.totalPages " >
-            {{}}
-          </button> -->
-        </section>
       </section>
     </div>
+    <section class="create-categories__page-selection">
+      <button
+        class="create-categories__simple-btn"
+        *ngFor="let pageNumber of pageNumbers"
+        (click)="goToPage(pageNumber)"
+      >
+        {{ pageNumber + 1 }}
+      </button>
+    </section>
   </section>
 </section>

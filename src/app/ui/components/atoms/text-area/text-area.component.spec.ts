@@ -18,4 +18,9 @@ describe('TextAreaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should write a value', () => {
+    component.writeValue('Test value');
+    expect(component.value).toBe('Test value');
+  });
 });

@@ -97,6 +97,14 @@
       color: var(--blue-home360);
     }
   }
+
+  &__page-selection {
+    margin: 20px;
+    display: flex;
+    // width: 80%;
+    justify-content: center;
+    gap: 8px;
+  }
 }
 
 @media (min-width: 400PX) {

@@ -70,9 +70,25 @@ h3 {
   font-size: 1.5rem;
 }
 
+h5 {
+  font-weight: 500;
+}
+
 p {
   margin-bottom: 1rem;
   font-size: 1rem;
   color: #444;
+}
+
+button {
+  width: 40px;
+  height: 40px;
+
+  padding: 5px;
+  border-radius: 8px;
+  background-color: var(--ghost-white);
+  // color: var(--blue-home360);
+  color: var(black);
+  border: var(--white-ligth-smoke) solid 1px;
 }
 

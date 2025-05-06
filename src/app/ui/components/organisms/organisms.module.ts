@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { FooterComponent } from './footer/footer.component';
+import { MoleculesModule } from "../molecules/molecules.module";
 
 
 
@@ -13,8 +14,9 @@ import { FooterComponent } from './footer/footer.component';
     FooterComponent
   ],
   imports: [
-    CommonModule
-  ],
+    CommonModule,
+    MoleculesModule
+],
   exports: [
     SideBarComponent,
     TopBarComponent,
