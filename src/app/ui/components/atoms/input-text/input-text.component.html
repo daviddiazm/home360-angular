@@ -1,0 +1,23 @@
+<label class="input-text__label" [for]="label">
+  <h4 class="input-text__label-title">
+    {{ label }}
+    <span *ngIf="required" class="input-text__required input-text__span">*</span>
+  </h4>
+  <input
+    class="input-text__input"
+    [placeholder]="placeholder"
+    [value]="value"
+    [required]="required"
+    [disabled]="isDisabled"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+    [id]="label"
+    type="text"
+  >
+  <span *ngIf="!errorMessage">
+    {{'&nbsp;'}}
+  </span>
+  <span class="input-text__span">
+    {{errorMessage}}
+  </span>
+</label>

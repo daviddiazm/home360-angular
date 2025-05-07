@@ -1,0 +1,8 @@
+<article class="article-ancord" >
+  <h5>{{title}}</h5>
+  <ul [ngClass]="{'__is-row': isRow}">
+    <li *ngFor="let item of itemList" >
+      <a href="" [innerHTML]="item" ></a>
+    </li>
+  </ul>
+</article>

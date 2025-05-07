@@ -1,0 +1,14 @@
+.manager-layout {
+  display: flex;
+  flex-direction: column;
+
+  &__main-wrapper {
+    display: flex;
+    // gap: 5px;
+  }
+
+  &__content {
+    width: 100%;
+  }
+}
+

@@ -1,0 +1,25 @@
+<label class="text-area__label" [for]="label">
+  <h4 class="text-area__label-title">
+    {{label}}
+    <span *ngIf="required" class="text-area__required text-area__span">*</span>
+  </h4>
+  <textarea
+    class="text-area__input"
+    name="textarea"
+    rows="6"
+    cols="50"
+    [placeholder]="placeholder"
+    [disabled]="isDisabled"
+    [id]="label"
+    [required]="required"
+    (input)="handleInput($event)"
+    (blur)="onTouched()"
+    [value]="value"
+  ></textarea>
+  <span *ngIf="!errorMessage">
+    {{'&nbsp;'}}
+  </span>
+  <span class="text-area__span">
+    {{errorMessage}}
+  </span>
+</label>
