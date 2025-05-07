@@ -24,6 +24,13 @@ export class CreateCategoriesComponent {
   pageSize = 10;
   orderAsc = true;
 
+  columns = [
+    { key: 'id', label: 'ID' },
+    { key: 'name', label: 'Nombre' },
+    { key: 'description', label: 'Descripción' }
+  ];
+
+
   constructor(
     private categoriesService: CategoriesService,
     private fb: FormBuilder

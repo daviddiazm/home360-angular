@@ -23,30 +23,17 @@
 
   <section class="create-categories__list-section">
     <h2 class="create-categories__title">Lista de categorías</h2>
-    <div class="create-categories__table-container">
-      <section class="create-categories__table" *ngIf="categoriesPage$ | async as categoriesPage">
-        <section class="create-categories__table-header">
-          <h5 class="create-categories__column-title">ID</h5>
-          <h5 class="create-categories__column-title">Nombre</h5>
-          <h5 class="create-categories__column-title">Descripción</h5>
-          <h5 class="create-categories__column-title">Acciones</h5>
-        </section>
-        <section class="create-categories__table-body">
-          <article class="create-categories__row" *ngFor="let category of categoriesPage.content">
-            <p class="create-categories__cell"> {{ category.id }} </p>
-            <p class="create-categories__cell"> {{ category.name }} </p>
-            <p class="create-categories__cell"> {{ category.description }} </p>
-            <i class="create-categories__actions"></i>
-          </article>
-        </section>
-      </section>
+
+    <div *ngIf="categoriesPage$ | async as categoriesPage">
+      <app-table
+        [columns]="columns"
+        [data]="categoriesPage.content">
+      </app-table>
     </div>
+
     <section class="create-categories__page-selection">
-      <button
-        class="create-categories__simple-btn"
-        *ngFor="let pageNumber of pageNumbers"
-        (click)="goToPage(pageNumber)"
-      >
+      <button class="create-categories__simple-btn" *ngFor="let pageNumber of pageNumbers"
+        (click)="goToPage(pageNumber)">
         {{ pageNumber + 1 }}
       </button>
     </section>
