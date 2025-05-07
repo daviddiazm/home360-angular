@@ -56,7 +56,7 @@
 
   &__table-header {
     display: grid;
-    grid-template-columns: 100px 1fr 2fr 120px;
+    grid-template-columns: 100px 1fr 1fr 120px;
     color: var(--gray);
     padding: 1rem;
     font-weight: bold;
@@ -71,7 +71,7 @@
 
   &__row {
     display: grid;
-    grid-template-columns: 100px 1fr 2fr 120px;
+    grid-template-columns: 100px 1fr 1fr 120px;
     align-items: center;
     padding: 1rem;
     border-top: 1px solid var(--white-ligth-smoke);
