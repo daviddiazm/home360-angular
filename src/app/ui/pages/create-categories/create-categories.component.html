@@ -24,7 +24,7 @@
   <section class="create-categories__list-section">
     <h2 class="create-categories__title">Lista de categorías</h2>
 
-    <div *ngIf="categoriesPage$ | async as categoriesPage">
+    <div *ngIf="categoriesPage$ | async as categoriesPage" class="create-categories__table" >
       <app-table
         [columns]="columns"
         [data]="categoriesPage.content">
