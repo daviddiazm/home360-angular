@@ -4,6 +4,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MoleculesModule } from "../molecules/molecules.module";
+import { TableComponent } from './table/table.component';
 
 
 
@@ -11,7 +12,8 @@ import { MoleculesModule } from "../molecules/molecules.module";
   declarations: [
     SideBarComponent,
     TopBarComponent,
-    FooterComponent
+    FooterComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { MoleculesModule } from "../molecules/molecules.module";
   exports: [
     SideBarComponent,
     TopBarComponent,
-    FooterComponent
+    FooterComponent,
+    TableComponent
   ]
 })
 export class OrganismsModule { }

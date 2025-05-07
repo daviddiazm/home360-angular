@@ -1,0 +1,48 @@
+.component {
+  &__table-container {
+    overflow-x: auto;
+    width: 100vw;
+  }
+  &__table {
+    // width: 85%;
+
+    min-width: 700px;
+    margin: 0px auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__table-header {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 120px;
+    color: var(--gray);
+    padding: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__table-body {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 120px;
+    align-items: center;
+    padding: 1rem;
+    border-top: 1px solid var(--white-ligth-smoke);
+    background-color: var(--white);
+
+    &:hover {
+      background-color: var(--white-ligth-smoke);
+    }
+  }
+
+  &__cell {
+    margin: 0;
+  }
+}
+

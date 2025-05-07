@@ -1,0 +1,16 @@
+<div class="component__table-container">
+  <section class="component__table" *ngIf="data?.length">
+    <section class="component__table-header">
+      <h5 class="component__column-title" *ngFor="let column of columns">
+        {{ column.label }}
+      </h5>
+    </section>
+    <section class="component__table-body">
+      <article class="component__row" *ngFor="let item of data">
+        <p class="component__cell" *ngFor="let column of columns">
+          {{ item[column.key] }}
+        </p>
+      </article>
+    </section>
+  </section>
+</div>
