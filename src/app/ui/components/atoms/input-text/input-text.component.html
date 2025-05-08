@@ -10,11 +10,12 @@
     [required]="required"
     [disabled]="isDisabled"
     (input)="handleInput($event)"
-    (blur)="onTouched()"
+    (blur)="blur.emit($event)"
+    (focus)="focus.emit($event)"
     [id]="label"
     type="text"
   >
-  <span *ngIf="!errorMessage">
+  <span *ngIf="!errorMessage && spaceLabel">
     {{'&nbsp;'}}
   </span>
   <span class="input-text__span">

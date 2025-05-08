@@ -1,1 +1,22 @@
 <p>locations-page works!</p>
+<pre>
+
+</pre>
+
+<div class="" *ngIf=" departments$ | async as departments " >
+  <app-auto-select
+  label="Selecciona el departamento"
+  [options]="departments | mapNameDep "
+  placeholder="Buscar departamento"
+  (selected)="onDepartmentSelected($event)"
+  ></app-auto-select>
+
+  <app-auto-select
+  *ngIf="citiesName$ | async as cities"
+  label="Selecciona el municipio"
+  [options]="cities"
+  placeholder="Buscar departamento"
+  (selected)="onDepartmentSelected($event)"
+  ></app-auto-select>
+
+</div>

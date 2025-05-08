@@ -1,0 +1,28 @@
+.select {
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  &__input {}
+
+  &__container {
+    position: absolute;
+    max-height: 500px;
+    overflow: auto;
+    background-color: var(--white);
+    z-index: 5;
+    width: 100%;
+  }
+
+  &__option {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-left: 1px solid var(--blue-cyan-dark);
+    border-right: 1px solid var(--blue-cyan-dark);
+    border-bottom: 1px solid var(--blue-cyan-dark);
+    border-radius: 8px;
+  }
+
+  &__option:hover {
+    background-color: var(--light-blue);
+  }
+}
