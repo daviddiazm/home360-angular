@@ -1,38 +1,48 @@
 <aside class="side-bar">
-  <!-- <button class="side-bar__toggle-btn" aria-label="Mostrar u ocultar menú">
-    <span class="side-bar__toggle-icon">
-      <img src="assets/icons/hamburger.svg" alt="hamburger icon" />
-    </span>
-  </button> -->
-
   <nav class="side-bar__nav">
     <ul class="side-bar__list">
-      <li class="side-bar__item side-bar__item--active">
-        <a href="#" class="side-bar__link">
+      <li class="side-bar__item" routerLinkActive="side-bar__item--active" [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/dashboard']" class="side-bar__link" >
           <span class="side-bar__icon">
             <img src="assets/icons/dashboard.svg" alt="Dashboard icon" />
           </span>
           <span class="side-bar__label">Dashboard</span>
         </a>
       </li>
-      <li class="side-bar__item">
-        <a href="#" class="side-bar__link">
+      <li class="side-bar__item" routerLinkActive="side-bar__item--active" [routerLinkActiveOptions]="{ exact: true }" >
+        <a [routerLink]="['/categories']" class="side-bar__link">
           <span class="side-bar__icon">
             <img src="assets/icons/categories.svg" alt="Categories icon" />
           </span>
           <span class="side-bar__label">Categorías</span>
         </a>
       </li>
-      <li class="side-bar__item">
-        <a href="#" class="side-bar__link">
+      <li class="side-bar__item" routerLinkActive="side-bar__item--active" [routerLinkActiveOptions]="{ exact: true }" >
+        <a [routerLink]="['/housing']" class="side-bar__link">
+          <span class="side-bar__icon">
+            <img src="assets/icons/houses.svg" alt="Categories icon" />
+          </span>
+          <span class="side-bar__label">Propiedades</span>
+        </a>
+      </li>
+      <li class="side-bar__item" routerLinkActive="side-bar__item--active" [routerLinkActiveOptions]="{ exact: true }" >
+        <a [routerLink]="['/users']" class="side-bar__link">
           <span class="side-bar__icon">
             <img src="assets/icons/users.svg" alt="Users icon" />
           </span>
           <span class="side-bar__label">Usuarios</span>
         </a>
       </li>
-      <li class="side-bar__item">
-        <a href="#" class="side-bar__link">
+      <li class="side-bar__item" routerLinkActive="side-bar__item--active" [routerLinkActiveOptions]="{ exact: true }" >
+        <a [routerLink]="['/locations']" class="side-bar__link">
+          <span class="side-bar__icon">
+            <img src="assets/icons/ubication.svg" alt="Users icon" />
+          </span>
+          <span class="side-bar__label">Ubicacion</span>
+        </a>
+      </li>
+      <li class="side-bar__item" routerLinkActive="side-bar__item--active" [routerLinkActiveOptions]="{ exact: true }" >
+        <a [routerLink]="['/settings']" class="side-bar__link">
           <span class="side-bar__icon">
             <img src="assets/icons/configuration.svg" alt="Configuration icon" />
           </span>
