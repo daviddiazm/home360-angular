@@ -5,6 +5,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { MoleculesModule } from "../molecules/molecules.module";
 import { TableComponent } from './table/table.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,7 +18,8 @@ import { TableComponent } from './table/table.component';
   ],
   imports: [
     CommonModule,
-    MoleculesModule
+    MoleculesModule,
+    RouterModule
 ],
   exports: [
     SideBarComponent,

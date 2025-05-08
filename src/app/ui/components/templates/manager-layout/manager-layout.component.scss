@@ -1,14 +1,17 @@
 .manager-layout {
   display: flex;
   flex-direction: column;
+  gap: 5px;
 
   &__main-wrapper {
     display: flex;
     // gap: 5px;
   }
 
+
   &__content {
-    width: 100%;
+    width: 80vw;
   }
+
 }
 

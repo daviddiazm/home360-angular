@@ -16,6 +16,8 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+  border: 1px solid var(--blue-cyan-dark);
+
   }
 
   &__label {
