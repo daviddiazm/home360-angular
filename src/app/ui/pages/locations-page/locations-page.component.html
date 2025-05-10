@@ -3,20 +3,39 @@
 
 </pre>
 
-<div class="" *ngIf=" departments$ | async as departments " >
-  <app-auto-select
-  label="Selecciona el departamento"
-  [options]="departments | mapNameDep "
-  placeholder="Buscar departamento"
-  (selected)="onDepartmentSelected($event)"
-  ></app-auto-select>
+<form
+  (ngSubmit)="onSubmit()"
+  action=""
+  [formGroup]="locationForm"
+  *ngIf=" departments$ | async as departments ">
+
+  <div class="" >
+    <app-auto-select
+    label="Selecciona el departamento"
+    [options]="departments | mapNameDep "
+    placeholder="Buscar departamento"
+    formControlName="department"
+    ></app-auto-select>
+  </div>
+
 
   <app-auto-select
-  *ngIf="citiesName$ | async as cities"
-  label="Selecciona el municipio"
-  [options]="cities"
-  placeholder="Buscar departamento"
-  (selected)="onDepartmentSelected($event)"
-  ></app-auto-select>
+    label="Selecciona el municipio"
+    [options]="citiesName"
+    placeholder="Buscar departamento"
+    formControlName="city"
+    >
+  </app-auto-select>
 
-</div>
+  <app-input-text
+  label="Escriba el nombre de la nueva locacion"
+  formControlName="location"
+  [required]="true"
+  placeholder="Escribe el nombre de la nueva locacion"
+  [errorMessage]="FormUtils.getFiledError(locationForm, 'location')"
+  ></app-input-text>
+
+  <app-button-submit
+  value="Guradar locacion"
+  ></app-button-submit>
+</form>

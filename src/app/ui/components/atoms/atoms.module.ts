@@ -5,6 +5,7 @@ import { TextAreaComponent } from './text-area/text-area.component';
 import { ButtonSubmitComponent } from './button-submit/button-submit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AutoSelectComponent } from '../molecules/auto-select/auto-select.component';
+import { InputTextSelectComponent } from './input-text-select/input-text-select.component';
 
 
 @NgModule({
@@ -12,6 +13,7 @@ import { AutoSelectComponent } from '../molecules/auto-select/auto-select.compon
     InputTextComponent,
     TextAreaComponent,
     ButtonSubmitComponent,
+    InputTextSelectComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +23,7 @@ import { AutoSelectComponent } from '../molecules/auto-select/auto-select.compon
     InputTextComponent,
     TextAreaComponent,
     ButtonSubmitComponent,
+    InputTextSelectComponent
   ]
 })
 export class AtomsModule { }

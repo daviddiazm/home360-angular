@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, MinValidator, ValidationErrors, Validators } from '@angular/forms';
-import { map, Observable, switchMap } from 'rxjs';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { map, Observable} from 'rxjs';
 import { Category } from 'src/app/core/models/category.interfaces';
 import { Page } from 'src/app/core/models/page.interface';
 import { CategoriesService } from 'src/app/core/services/categories.service';
@@ -33,10 +33,10 @@ export class CreateCategoriesComponent {
 
   constructor(
     private categoriesService: CategoriesService,
-    private fb: FormBuilder
+    private formBuilder: FormBuilder
   ) { }
 
-  categoryForm: FormGroup = this.fb.group({
+  categoryForm: FormGroup = this.formBuilder.group({
     name:
       ['',
         [Validators.required, Validators.minLength(3), Validators.maxLength(50)],

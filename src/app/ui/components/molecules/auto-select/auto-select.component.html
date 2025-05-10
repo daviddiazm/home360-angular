@@ -1,12 +1,12 @@
 <section class="select">
-  <app-input-text
+  <app-input-text-select
     [label]="label"
     (focus)="isFocus = true"
     (blur)="onBlur()"
     [spaceLabel]="false"
     [formControl]="inputControl"
     [placeholder]="placeholder">
-  </app-input-text>
+  </app-input-text-select>
 
   <ul *ngIf="(filteredOptions$ | async )?.length !== 0 && isFocus " class="select__container">
     <li
