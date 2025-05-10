@@ -20,6 +20,7 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
   @Input() placeholder: string = 'Seleccionar...';
   @Input() label?: string;
   @Input() disable: boolean = false;
+  @Input() required: boolean = false;
 
   inputControl = new FormControl('');
   filteredOptions$: Observable<string[]> = of([]);

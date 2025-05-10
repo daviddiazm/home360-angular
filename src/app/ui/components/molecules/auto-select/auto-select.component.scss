@@ -1,8 +1,6 @@
 .select {
-  width: 80%;
-  max-width: 400px;
+  width: 100%;
   position: relative;
-  &__input {}
 
   &__container {
     position: absolute;
@@ -24,5 +22,20 @@
 
   &__option:hover {
     background-color: var(--light-blue);
+  }
+}
+
+.select--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+
+  input {
+    background-color: #f1f1f1 !important;
+    color: #999 !important;
+    cursor: not-allowed;
+  }
+
+  .select__option {
+    pointer-events: none;
   }
 }

@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class ButtonSubmitComponent {
   @Input() value: string = ''
+  @Input() disabled: boolean = false
 }

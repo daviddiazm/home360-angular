@@ -18,12 +18,13 @@ export class InputTextComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
   @Input() errorMessage: string | null = '';
   @Input() required: boolean = false;
+  @Input() disabled: boolean = false;
+  @Input() isDisable: boolean = false;
 
   value: string = '';
-  isDisabled = false;
 
-  onChange = (value: any) => {};
-  onTouched = () => {};
+  onChange = (value: any) => { };
+  onTouched = () => { };
 
   writeValue(value: string): void {
     this.value = value;
@@ -34,8 +35,17 @@ export class InputTextComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-  setDisabledState?(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+  
+  // setDisabledState?(disabled: boolean): void {
+  //   this.disabled = disabled;
+  // }
+  // setDisabledState?(isDisable: boolean): void {
+  //   this.isDisable = isDisable;
+  // }
+
+  onInput(value: string) {
+    this.value = value;
+    this.onChange(value);
   }
 
   handleInput(event: Event) {

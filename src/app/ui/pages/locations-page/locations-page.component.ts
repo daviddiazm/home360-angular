@@ -34,13 +34,18 @@ export class LocationsPageComponent implements OnInit {
   citiesName: string[] = []
   cities$?: Observable<City[]>
 
+  saveIsSucces: boolean = false
+
 
   ngOnInit(): void {
     this.getDepartments()
 
     this.locationForm.valueChanges.subscribe(value => {
-      if (value.department) this.onDepartmentSelected(value.department)
       if (value.city) this.onCitySelected(value.city)
+    })
+
+    this.locationForm.get('department')?.valueChanges.subscribe( value => {
+      if(value) this.onDepartmentSelected(value)
     })
   }
 
@@ -63,6 +68,9 @@ export class LocationsPageComponent implements OnInit {
   onDepartmentSelected(departmentName: string) {
     const departmentSelected = this.departments.find(department => department.name == departmentName);
     if (departmentSelected) this.getCities(departmentSelected?.id)
+    if(this.locationForm.get('city')?.value) {
+      this.locationForm.get('city')?.setValue('')
+    }
   }
 
   onCitySelected(cityName: string) {
@@ -78,6 +86,8 @@ export class LocationsPageComponent implements OnInit {
       this.locationService.postLocation(locationValue, this.cityId).subscribe({
         next: (res) => {
           console.log("Guardado exitosamente:", res);
+          this.saveIsSucces = true
+          this.locationForm.reset()
         },
         error: (err) => {
           console.error("Error al guardar:", err);

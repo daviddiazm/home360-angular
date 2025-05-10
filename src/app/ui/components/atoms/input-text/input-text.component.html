@@ -1,4 +1,4 @@
-<label class="input-text__label" [for]="label">
+<label class="input-text__label" [ngClass]="{ 'input-text--disabled': disabled }" [for]="label">
   <h4 class="input-text__label-title">
     {{ label }}
     <span *ngIf="required" class="input-text__required input-text__span">*</span>
@@ -8,7 +8,7 @@
     [placeholder]="placeholder"
     [value]="value"
     [required]="required"
-    [disabled]="isDisabled"
+    [disabled]="disabled"
     (input)="handleInput($event)"
     (blur)="onTouched()"
     [id]="label"
