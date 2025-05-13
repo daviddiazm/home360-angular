@@ -25,7 +25,7 @@ export class LocationsPageComponent implements OnInit {
     location: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
   })
 
-  private cityId?: number
+  cityId?: number
 
   departments: Department[] = []
   departments$?: Observable<Department[]>
@@ -40,10 +40,9 @@ export class LocationsPageComponent implements OnInit {
   ngOnInit(): void {
     this.getDepartments()
 
-    this.locationForm.valueChanges.subscribe(value => {
-      if (value.city) this.onCitySelected(value.city)
+    this.locationForm.get('city')?.valueChanges.subscribe( value => {
+      if(value) this.onCitySelected(value)
     })
-
     this.locationForm.get('department')?.valueChanges.subscribe( value => {
       if(value) this.onDepartmentSelected(value)
     })

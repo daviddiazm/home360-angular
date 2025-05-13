@@ -49,7 +49,7 @@ describe('CreateCategoriesComponent', () => {
 
     serviceMock.getCategoriesByPage.mockReturnValue(of(mockPage));
     component.loadCategories();
-    component.categories$.subscribe((page) => {
+    component.categoriesPage$.subscribe((page) => {
 
       expect(page).toHaveProperty('content');
       expect(page).toHaveProperty('page');

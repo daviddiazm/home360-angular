@@ -35,18 +35,13 @@ export class InputTextComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-  
+
   // setDisabledState?(disabled: boolean): void {
   //   this.disabled = disabled;
   // }
   // setDisabledState?(isDisable: boolean): void {
   //   this.isDisable = isDisable;
   // }
-
-  onInput(value: string) {
-    this.value = value;
-    this.onChange(value);
-  }
 
   handleInput(event: Event) {
     const value = (event.target as HTMLInputElement).value;
