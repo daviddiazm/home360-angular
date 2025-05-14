@@ -28,6 +28,7 @@ export class LocationsPageComponent implements OnInit {
   cityId?: number
 
   departments: Department[] = []
+  departmentsName: string[] = []
   departments$?: Observable<Department[]>
 
   cities: City[] = []
@@ -54,6 +55,10 @@ export class LocationsPageComponent implements OnInit {
     this.departments$.subscribe(departments => {
       this.departments = departments
     })
+
+    if(this.departments.length > 0) {
+      this.departmentsName = this.departments.map(d => d.name )
+    }
   }
 
   getCities(idDepartment: number) {

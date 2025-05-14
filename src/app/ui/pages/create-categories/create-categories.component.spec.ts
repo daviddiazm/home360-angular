@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateCategoriesComponent } from './create-categories.component';
 import { CategoriesService } from 'src/app/core/services/categories.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Page } from 'src/app/core/models/page.interface';
 import { Category } from 'src/app/core/models/category.interfaces';
@@ -14,6 +13,14 @@ describe('CreateCategoriesComponent', () => {
   let serviceMock: jest.Mocked<CategoriesService>;
 
   beforeEach(() => {
+    const mockCategoriesPage: Page<Category> = {
+      content: [],
+      totalPages: 1,
+      page: 0,
+      totalElements: 0,
+      orderAsc: true,
+      size: 10,
+    };
     serviceMock = {
       postCategory: jest.fn(),
       getCategoriesByPage: jest.fn()
@@ -28,11 +35,22 @@ describe('CreateCategoriesComponent', () => {
     });
 
     const fb = TestBed.inject(FormBuilder);
-    component = new CreateCategoriesComponent(serviceMock, fb);
+    fixture = TestBed.createComponent(CreateCategoriesComponent);
+    component = fixture.componentInstance;
+
+    fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('ngOninit', () => {
+    it('should loadCategories when Oninit', () => {
+      const spy = jest.spyOn(component, 'loadCategories')
+      component.ngOnInit()
+      expect(spy).toHaveBeenCalled()
+    })
   });
 
   it('should load categories and return a Page<Category>', (done) => {
@@ -76,7 +94,7 @@ describe('CreateCategoriesComponent', () => {
       description: 'Desc',
     }));
 
-    component.categoryForm.setValue({name: 'Test', description: 'Desc'})
+    component.categoryForm.setValue({ name: 'Test', description: 'Desc' })
 
     component.createCategory('Test', 'Desc')
     expect(serviceMock.postCategory).toHaveBeenCalledWith('Test', 'Desc');

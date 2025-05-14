@@ -4,13 +4,13 @@
     (ngSubmit)="onSubmit()"
     action=""
     [formGroup]="locationForm"
-    *ngIf=" departments$ | async as departments ">
+    *ngIf=" departments$ | async">
 
 
     <app-auto-select
     [required]="true"
     label="Selecciona el departamento"
-    [options]="departments | mapNameDep "
+    [options]="departmentsName"
     placeholder="Buscar departamento"
     formControlName="department"
     ></app-auto-select>
