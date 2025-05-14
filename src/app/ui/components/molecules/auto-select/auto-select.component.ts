@@ -26,8 +26,8 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
   filteredOptions$: Observable<string[]> = of([]);
   isFocus: boolean = false;
 
-  private onChange = (value: string | null) => {};
-  private onTouched = () => {};
+  onChange = (value: string | null) => {};
+  onTouched = () => {};
 
   ngOnInit() {
     this.filteredOptions$ = this.inputControl.valueChanges.pipe(

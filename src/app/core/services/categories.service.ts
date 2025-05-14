@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment.development';
 import { Category } from '../models/category.interfaces';
 import { Page } from '../models/page.interface';
 import { Observable } from 'rxjs';
+import { ResponceUsualMessage } from 'src/app/shared/interfaces/responceUsualMessage.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,9 @@ export class CategoriesService {
 
   constructor(private http: HttpClient) {}
 
-  postCategory(name: string, description: string): Observable<Category> {
+  postCategory(name: string, description: string): Observable<ResponceUsualMessage> {
     const url = `${this.categoryApiUrl}/`;
-    return this.http.post<Category>(url, {name, description});
+    return this.http.post<ResponceUsualMessage>(url, {name, description});
   }
 
   getCategoriesByPage(page: number, size: number, orderAsc: boolean): Observable<Page<Category>> {

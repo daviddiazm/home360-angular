@@ -12,10 +12,10 @@ describe('AutoSelectComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AutoSelectComponent,
-        InputTextSelectComponent // Componente real
+        InputTextSelectComponent
       ],
       imports: [
-        ReactiveFormsModule // Necesario para formControl
+        ReactiveFormsModule
       ]
     });
     fixture = TestBed.createComponent(AutoSelectComponent);
@@ -26,4 +26,12 @@ describe('AutoSelectComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('selectOption', () => {
+    // component.inputControl.
+    const spy = jest.spyOn(component.inputControl, 'setValue')
+    const mockOption = 'option'
+    expect(spy).toHaveBeenCalledWith(mockOption)
+  })
+
 });
