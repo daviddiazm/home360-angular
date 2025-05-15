@@ -61,6 +61,18 @@ describe('InputTextSelectComponent', () => {
     });
   });
 
+  describe('handleInput', () => {
+    it('should set value and call onChages when handleInput', () => {
+      const mockTarget = { value: 'value mock' } as HTMLInputElement;
+      const mockEvent = new Event('input');
+      const onChangeSpy = jest.spyOn(component, 'onChange')
+      Object.defineProperty(mockEvent, 'target', { value: mockTarget });
 
+      component.handleInput(mockEvent);
+
+      expect(component.value).toBe('value mock');
+      expect(onChangeSpy).toHaveBeenCalledWith('value mock');
+    })
+  })
 
 });

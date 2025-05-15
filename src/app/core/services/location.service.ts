@@ -20,15 +20,6 @@ export class LocationService {
     return this.http.get<Department[]>(url)
   }
 
-  getNameDepartments(): Observable<string[]> {
-    const url = `${this.regionBaseUrl}/Department/`
-    return this.http.get<Department[]>(url).pipe(
-      map((departments: Department[]) => {
-        return departments.map((department) => department.name)
-      })
-    )
-  }
-
   getCitiesByDepartment(id: number):Observable<City[]> {
     const url = `${this.regionBaseUrl}/Department/${id}/cities`
     return this.http.get<City[]>(url)

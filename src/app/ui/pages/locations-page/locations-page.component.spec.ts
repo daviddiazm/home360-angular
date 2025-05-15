@@ -30,7 +30,6 @@ describe('LocationsPageComponent', () => {
   beforeEach(() => {
     serviceMock = {
       getDepartments: jest.fn().mockReturnValue(of(mockDepartments)),
-      getNameDepartments: jest.fn(),
       getCitiesByDepartment: jest.fn().mockReturnValue(of(mockCities)),
       getNameMunicipalities: jest.fn(),
       getAllCities: jest.fn(),
@@ -186,19 +185,46 @@ describe('LocationsPageComponent', () => {
 
   describe('onSubmit', () => {
 
-    it('should call marckAsTouched and createLocation whean values are valid ', () => {
-      const spyFrom = jest.spyOn(component.locationForm, 'markAllAsTouched')
-      const spyCreateLocation = jest.spyOn(component, 'createNewLocation')
-      component.locationForm.get('department')?.setValue('department')
-      component.locationForm.get('city')?.setValue('city')
-      component.locationForm.get('location')?.setValue('location')
-      component.onSubmit()
-      
-      expect(spyFrom).toHaveBeenCalled()
-      expect(spyCreateLocation).toHaveBeenCalled()
-    })
-    
+    // it('should call marckAsTouched and createLocation whean values are valid ', () => {
+    //   const spyFrom = jest.spyOn(component.locationForm, 'markAllAsTouched')
+    //   const spyCreateLocation = jest.spyOn(component, 'createNewLocation')
+    //   component.locationForm.get('department')?.setValue('department')
+    //   component.locationForm.get('city')?.setValue('city')
+    //   component.locationForm.get('location')?.setValue('location')
+    //   component.cityId = 1
+    //   component.onSubmit()
 
+    //   expect(spyFrom).toHaveBeenCalled()
+    //   expect(spyCreateLocation).toHaveBeenCalled()
+    // })
+    it('should call markAsTouched and createLocation when values are valid', () => {
+      const mockResponse = { message: 'Success', localDate: '' };
+      serviceMock.postLocation.mockReturnValue(of(mockResponse));
+
+      component.locationForm.get('department')?.setValue('department');
+      component.locationForm.get('city')?.setValue('city');
+      component.locationForm.get('location')?.setValue('location');
+      component.cityId = 1;
+
+      const spyForm = jest.spyOn(component.locationForm, 'markAllAsTouched');
+      const spyCreateLocation = jest.spyOn(component, 'createNewLocation');
+
+      component.onSubmit();
+
+      expect(spyForm).toHaveBeenCalled();
+      expect(spyCreateLocation).toHaveBeenCalled();
+    });
   })
+
+  it('should set errorMessage when cityId no exist', () => {
+    component.locationForm.get('department')?.setValue('department');
+    component.locationForm.get('city')?.setValue('city');
+    component.locationForm.get('location')?.setValue('location');
+    component.cityId = undefined;
+    component.onSubmit()
+    expect(component.errorMessage).toBe('Porfavor ingresar una ubicacion valida')
+  })
+
+
 
 });

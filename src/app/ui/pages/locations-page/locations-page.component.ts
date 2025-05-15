@@ -25,6 +25,7 @@ export class LocationsPageComponent implements OnInit {
     location: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]],
   })
 
+  errorMessage?:string
   cityId?: number
 
   departments: Department[] = []
@@ -102,7 +103,10 @@ export class LocationsPageComponent implements OnInit {
 
   onSubmit() {
     this.locationForm.markAllAsTouched()
-    if (this.locationForm.valid) {
+    if(!this.cityId) {
+      this.errorMessage = 'Porfavor ingresar una ubicacion valida'
+    }
+    if (this.locationForm.valid && this.cityId) {
       this.createNewLocation()
     }
   }

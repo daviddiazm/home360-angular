@@ -47,4 +47,11 @@
     message="Se guardo exitosamente"
     ></app-notification>
   </div>
+  <div *ngIf="errorMessage" >
+    <app-notification
+    [message]="errorMessage"
+    [type]="'error'"
+    >
+    </app-notification>
+  </div>
 </section>
