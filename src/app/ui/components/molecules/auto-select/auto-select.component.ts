@@ -45,7 +45,7 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
       this.initFilter();
     }
   }
-  private initFilter() {
+  initFilter() {
     this.filteredOptions$ = this.inputControl.valueChanges.pipe(
       startWith(this.inputControl.value ?? ''),
       debounceTime(300),
@@ -53,7 +53,7 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
     );
   }
 
-  private filter(value: string): string[] {
+  filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     return this.options.filter(option =>
       option.toLowerCase().includes(filterValue)
@@ -77,11 +77,11 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
     this.inputControl.setValue(value);
   }
 
-  registerOnChange(fn: any): void {
+  registerOnChange(fn: () => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
@@ -89,11 +89,11 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
     isDisabled ? this.disableInput() : this.enableInput();
   }
 
-  private disableInput(): void {
+  disableInput(): void {
     this.inputControl.disable();
   }
 
-  private enableInput(): void {
+  enableInput(): void {
     this.inputControl.enable();
   }
 

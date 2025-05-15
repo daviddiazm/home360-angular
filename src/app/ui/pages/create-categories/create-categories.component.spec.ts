@@ -9,6 +9,7 @@ import { of, throwError } from 'rxjs';
 import { AtomsModule } from '../../components/atoms/atoms.module';
 import { CommonModule } from '@angular/common';
 import { ResponceUsualMessage } from 'src/app/shared/interfaces/responceUsualMessage.interface';
+import { OrganismsModule } from '../../components/organisms/organisms.module';
 
 describe('CreateCategoriesComponent', () => {
   let component: CreateCategoriesComponent;
@@ -33,7 +34,7 @@ describe('CreateCategoriesComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [CreateCategoriesComponent],
-      imports: [ReactiveFormsModule, AtomsModule, CommonModule],
+      imports: [ReactiveFormsModule, AtomsModule, CommonModule, OrganismsModule],
       providers: [
         FormBuilder,
         { provide: CategoriesService, useValue: serviceMock },

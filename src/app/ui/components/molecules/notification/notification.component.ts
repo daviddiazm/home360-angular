@@ -24,8 +24,6 @@ export class NotificationComponent implements OnInit {
         return 'yellow';
       case 'error':
         return 'red';
-      default:
-        return 'green';
     }
   }
 }

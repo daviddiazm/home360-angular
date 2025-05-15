@@ -54,11 +54,9 @@ export class LocationsPageComponent implements OnInit {
     this.departments$ = this.locationService.getDepartments()
     this.departments$.subscribe(departments => {
       this.departments = departments
+      this.departmentsName = this.departments.map(d => d.name )
     })
 
-    if(this.departments.length > 0) {
-      this.departmentsName = this.departments.map(d => d.name )
-    }
   }
 
   getCities(idDepartment: number) {
