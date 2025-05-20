@@ -24,7 +24,6 @@ export class InputTextSelectComponent implements ControlValueAccessor {
 
   value: string = '';
   isDisabled = false;
-
   onChange = (value: string) => { };
   onTouched = () => { };
 

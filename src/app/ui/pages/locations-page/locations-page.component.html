@@ -37,7 +37,7 @@
 
     <div class="locations__submit">
       <app-button-submit
-      [disabled]="!locationForm.get('location')?.value"
+      [disabled]="locationForm.invalid"
       value="Guradar locacion"
       ></app-button-submit>
     </div>

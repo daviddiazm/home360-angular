@@ -1,6 +1,6 @@
-import { Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { debounceTime, map, Observable, of, startWith } from 'rxjs';
+import { debounceTime, map, Observable, of, startWith, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-auto-select',
@@ -15,7 +15,8 @@ import { debounceTime, map, Observable, of, startWith } from 'rxjs';
   ]
 })
 
-export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChanges {
+export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChanges, OnDestroy {
+
   @Input() options: string[] = [];
   @Input() placeholder: string = 'Seleccionar...';
   @Input() label?: string;
@@ -26,6 +27,8 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
   filteredOptions$: Observable<string[]> = of([]);
   isFocus: boolean = false;
 
+  subscription = new Subscription ();
+
   onChange = (value: string | null) => {};
   onTouched = () => {};
 
@@ -35,9 +38,12 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
       debounceTime(300),
       map(value => this.filter(value ?? ''))
     );
-    this.inputControl.valueChanges.subscribe(value => {
+
+    const inputControlSubscription = this.inputControl.valueChanges.subscribe(value => {
       this.onChange(value);
     });
+
+    this.subscription.add(inputControlSubscription)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -45,6 +51,11 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
       this.initFilter();
     }
   }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
+  }
+
   initFilter() {
     this.filteredOptions$ = this.inputControl.valueChanges.pipe(
       startWith(this.inputControl.value ?? ''),
