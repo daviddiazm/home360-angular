@@ -1,0 +1,42 @@
+.select {
+  width: 100%;
+  position: relative;
+
+  &__container {
+    max-height: 300px;
+    position: absolute;
+    overflow: auto;
+    background-color: var(--white);
+    z-index: 5;
+    width: 100%;
+    border-radius: 8px;
+    border-bottom: 1px solid var(--blue-cyan-dark) ;
+  }
+
+  &__option {
+    cursor: pointer;
+    padding: 6px 10px;
+    border-left: 1px solid var(--blue-cyan-dark);
+    border-right: 1px solid var(--blue-cyan-dark);
+    border-bottom: 1px solid var(--blue-cyan-dark);
+  }
+
+  &__option:hover {
+    background-color: var(--light-blue);
+  }
+}
+
+.select--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+
+  input {
+    background-color: #f1f1f1;
+    color: #999;
+    cursor: not-allowed;
+  }
+
+  .select__option {
+    pointer-events: none;
+  }
+}

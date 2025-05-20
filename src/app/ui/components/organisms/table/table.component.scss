@@ -1,12 +1,9 @@
 .component {
   &__table-container {
     overflow-x: auto;
-    // width: 100vw;
     width: 100%;
   }
   &__table {
-    width: 85%;
-
     min-width: 700px;
     margin: 0px auto;
     border-radius: 10px;

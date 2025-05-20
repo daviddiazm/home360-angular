@@ -1,1 +1,7 @@
-<button type="submit" class="button__submit">{{ value }}</button>
+<button
+  type="submit"
+  class="button__submit"
+  [ngClass]="{'button__submit--disabled': disabled}"
+  [disabled]="disabled">
+  {{ value }}
+</button>

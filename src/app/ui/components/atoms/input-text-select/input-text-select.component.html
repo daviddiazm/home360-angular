@@ -1,4 +1,4 @@
-<label class="input-text__label" [ngClass]="{ 'input-text--disabled': disabled }" [for]="label">
+<label class="input-text__label" [for]="label">
   <h4 class="input-text__label-title">
     {{ label }}
     <span *ngIf="required" class="input-text__required input-text__span">*</span>
@@ -8,13 +8,14 @@
     [placeholder]="placeholder"
     [value]="value"
     [required]="required"
-    [disabled]="disabled"
+    [disabled]="isDisabled"
     (input)="handleInput($event)"
-    (blur)="onTouched()"
+    (blur)="blur.emit($event)"
+    (focus)="focus.emit($event)"
     [id]="label"
     type="text"
   >
-  <span *ngIf="!errorMessage">
+  <span *ngIf="!errorMessage && spaceLabel">
     {{'&nbsp;'}}
   </span>
   <span class="input-text__span">

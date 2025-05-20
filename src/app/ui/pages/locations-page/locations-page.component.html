@@ -1,1 +1,57 @@
-<p>locations-page works!</p>
+<section class="locations">
+  <form
+    class=""
+    (ngSubmit)="onSubmit()"
+    action=""
+    [formGroup]="locationForm"
+    *ngIf=" departments$ | async">
+
+
+    <app-auto-select
+    [required]="true"
+    label="Selecciona el departamento"
+    [options]="departmentsName"
+    placeholder="Buscar departamento"
+    formControlName="department"
+    ></app-auto-select>
+
+
+    <app-auto-select
+      [required]="true"
+      label="Selecciona el municipio"
+      [options]="citiesName"
+      placeholder="Buscar departamento"
+      formControlName="city"
+      [disable]="!locationForm.get('department')?.value"
+      >
+    </app-auto-select>
+
+    <app-input-text
+    label="Escriba el nombre de la nueva locacion"
+    formControlName="location"
+    [required]="true"
+    placeholder="Escribe el nombre de la nueva locacion"
+    [errorMessage]="FormUtils.getFiledError(locationForm, 'location')"
+    [disabled]="!locationForm.get('city')?.value"
+    ></app-input-text>
+
+    <div class="locations__submit">
+      <app-button-submit
+      [disabled]="locationForm.invalid"
+      value="Guradar locacion"
+      ></app-button-submit>
+    </div>
+  </form>
+  <div *ngIf="saveIsSucces" >
+    <app-notification
+    message="Se guardo exitosamente"
+    ></app-notification>
+  </div>
+  <div *ngIf="errorMessage" >
+    <app-notification
+    [message]="errorMessage"
+    [type]="'error'"
+    >
+    </app-notification>
+  </div>
+</section>

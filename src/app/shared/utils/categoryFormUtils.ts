@@ -1,5 +1,5 @@
 import { AbstractControl, AsyncValidatorFn, ValidationErrors } from "@angular/forms";
-import { catchError, debounce, debounceTime, delay, distinctUntilChanged, map, Observable, of, switchMap, take, tap, timer } from "rxjs";
+import { catchError, debounceTime, map, Observable, of, switchMap, take, } from "rxjs";
 import { CategoriesService } from "src/app/core/services/categories.service";
 
 export function uniqueCategoryNameValidator(categoriesService: CategoriesService): AsyncValidatorFn {

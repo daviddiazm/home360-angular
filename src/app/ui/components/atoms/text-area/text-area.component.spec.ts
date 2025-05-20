@@ -23,4 +23,14 @@ describe('TextAreaComponent', () => {
     component.writeValue('Test value');
     expect(component.value).toBe('Test value');
   });
+
+  it('should update the component\'s value property with the input value', () => {
+    const mockEvent = {
+      target: { value: 'test input' } as HTMLInputElement,
+    } as unknown as Event;
+
+    component.handleInput(mockEvent);
+
+    expect(component.value).toBe('test input');
+  });
 });

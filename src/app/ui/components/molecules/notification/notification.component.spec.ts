@@ -10,6 +10,7 @@ describe('NotificationComponent', () => {
     TestBed.configureTestingModule({
       declarations: [NotificationComponent]
     });
+    jest.useFakeTimers()
     fixture = TestBed.createComponent(NotificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -17,6 +18,17 @@ describe('NotificationComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set to visible afet 20mls in Oninit', () => {
+    component.ngOnInit()
+    jest.advanceTimersByTime(5000)
+    expect(component.visible).toBe(false)
+  });
+
+  it('should return "green" class for success type', () => {
+    component.type = 'success';
+    expect(component.getColorClass()).toBe('green');
   });
 
   it('should return "green" class for success type', () => {

@@ -7,12 +7,23 @@ import { AtomsModule } from '../components/atoms/atoms.module';
 import { MoleculesModule } from '../components/molecules/molecules.module';
 import { PagesRoutingModule } from './pages.routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LocationsPageComponent } from './locations-page/locations-page.component';
+import { ConfigurationPageComponent } from './configuration-page/configuration-page.component';
+import { HousingPageComponent } from './housing-page/housing-page.component';
+import { UserPageComponent } from './user-page/user-page.component';
+import { MapNameDepartmentPipe } from 'src/app/shared/pipes/department-map-name.pipe';
 
 
 @NgModule({
   declarations: [
     AppHomeComponent,
-    CreateCategoriesComponent
+    CreateCategoriesComponent,
+    LocationsPageComponent,
+    ConfigurationPageComponent,
+    AppHomeComponent,
+    HousingPageComponent,
+    UserPageComponent,
+    MapNameDepartmentPipe
   ],
   imports: [
     PagesRoutingModule,

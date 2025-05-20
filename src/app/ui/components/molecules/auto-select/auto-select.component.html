@@ -1,0 +1,21 @@
+<section class="select" [ngClass]="{ 'select--disabled': disable }">
+  <app-input-text-select
+    [required]="required"
+    [label]="label"
+    (focus)="isFocus = true"
+    (blur)="onBlur()"
+    [spaceLabel]="false"
+    [formControl]="inputControl"
+    [placeholder]="placeholder">
+  </app-input-text-select>
+
+  <ul *ngIf="(filteredOptions$ | async )?.length !== 0 && isFocus" class="select__container">
+    <li
+      class="select__option"
+      *ngFor="let option of filteredOptions$ | async"
+      (click)="selectOption(option)"
+    >
+      {{ option }}
+    </li>
+  </ul>
+</section>
