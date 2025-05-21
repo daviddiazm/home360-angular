@@ -11,10 +11,10 @@ import { ResponceUsualMessage } from 'src/app/shared/interfaces/responceUsualMes
 })
 export class CategoriesService {
 
-  private baseUrl = environment.baseUrl
-  private categoryApiUrl = `${this.baseUrl}/categories`
+  private readonly baseUrl = environment.baseUrl
+  private readonly categoryApiUrl = `${this.baseUrl}/categories`
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   postCategory(name: string, description: string): Observable<ResponceUsualMessage> {
     const url = `${this.categoryApiUrl}/`;

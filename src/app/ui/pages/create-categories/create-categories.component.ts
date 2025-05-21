@@ -32,8 +32,8 @@ export class CreateCategoriesComponent {
 
 
   constructor(
-    private categoriesService: CategoriesService,
-    private formBuilder: FormBuilder
+    private readonly categoriesService: CategoriesService,
+    private readonly formBuilder: FormBuilder
   ) { }
 
   categoryForm: FormGroup = this.formBuilder.group({

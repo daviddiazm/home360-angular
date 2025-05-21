@@ -1,0 +1,16 @@
+<div class="search-sort-container">
+  <div class="search-box">
+    <input type="text" [formControl]="searchControl" [placeholder]="placeholder">
+  </div>
+
+  <div class="sort-box">
+    <button (click)="onSort()">
+      <ng-container *ngIf="isAscending; else descendingIcon">
+        <i class="fa-solid fa-arrow-up-a-z"></i>
+      </ng-container>
+      <ng-template #descendingIcon>
+        <i class="fa-solid fa-arrow-down-z-a"></i>
+      </ng-template>
+    </button>
+  </div>
+</div>
