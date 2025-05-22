@@ -68,6 +68,15 @@
       [columns]="columns"
       [data]="locationsPage.content"
       ></app-table>
+
+      <app-pagination-buttons
+      [currentPage]="locationsPage.page"
+      [pageNumbers]="pageNumbers"
+      [totalPages]="locationsPage.totalPages"
+      (pageChange)="onPageCahnge($event)"
+      ></app-pagination-buttons>
     </section>
+
+
   </section>
 </section>

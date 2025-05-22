@@ -43,6 +43,7 @@ export class LocationsPageComponent implements OnInit, OnDestroy {
   currentPage: number = 0
   pageSize: number = 10
   orderAsc: boolean = true
+  totalPages = 0
   searchTerm: string = ''
   columns = [
     { key: 'id', label: 'ID' },
@@ -145,6 +146,7 @@ export class LocationsPageComponent implements OnInit, OnDestroy {
     ).pipe(
       map(page => {
         this.pageNumbers = [];
+        this.totalPages = page.totalPages
         for (let i = 0; i < page.totalPages; i++) {
           this.pageNumbers.push(i);
         }
@@ -172,4 +174,8 @@ export class LocationsPageComponent implements OnInit, OnDestroy {
     this.loadLocations();
   }
 
+  onPageCahnge(pageNumber: number) {
+    this.currentPage = pageNumber
+    this.loadLocations()
+  }
 }

@@ -6,6 +6,7 @@ import { ArticleAncordComponent } from './article-ancord/article-ancord.componen
 import { AutoSelectComponent } from './auto-select/auto-select.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchSortComponent } from './search-sort/search-sort.component';
+import { PaginationButtonsComponent } from './pagination-buttons/pagination-buttons.component';
 
 
 
@@ -14,7 +15,8 @@ import { SearchSortComponent } from './search-sort/search-sort.component';
     NotificationComponent,
     ArticleAncordComponent,
     AutoSelectComponent,
-    SearchSortComponent
+    SearchSortComponent,
+    PaginationButtonsComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { SearchSortComponent } from './search-sort/search-sort.component';
     NotificationComponent,
     ArticleAncordComponent,
     AutoSelectComponent,
-    SearchSortComponent
+    SearchSortComponent,
+    PaginationButtonsComponent
   ]
 })
 export class MoleculesModule { }

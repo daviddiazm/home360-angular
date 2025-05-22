@@ -31,11 +31,11 @@
       </app-table>
     </div>
 
-    <section class="create-categories__page-selection">
-      <button class="create-categories__simple-btn" *ngFor="let pageNumber of pageNumbers"
-        (click)="goToPage(pageNumber)">
-        {{ pageNumber + 1 }}
-      </button>
-    </section>
+    <app-pagination-buttons
+    [currentPage]="currentPage"
+    [pageNumbers]="pageNumbers"
+    [totalPages]="totalPages"
+    (pageChange)="onPageChange($event)"
+    ></app-pagination-buttons>
   </section>
 </section>

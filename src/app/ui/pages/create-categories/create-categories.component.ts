@@ -23,6 +23,7 @@ export class CreateCategoriesComponent {
   currentPage = 0;
   pageSize = 10;
   orderAsc = true;
+  totalPages = 0;
 
   columns = [
     { key: 'id', label: 'ID' },
@@ -80,6 +81,7 @@ export class CreateCategoriesComponent {
     ).pipe(
       map(page => {
         this.pageNumbers = [];
+        this.totalPages = page.totalPages
         for (let i = 0; i < page.totalPages; i++) {
           this.pageNumbers.push(i);
         }
@@ -88,9 +90,8 @@ export class CreateCategoriesComponent {
     )
   }
 
-  goToPage(pageNumber: number): void {
+  onPageChange(pageNumber: number): void {
     this.currentPage = pageNumber;
     this.loadCategories();
   }
-
 }
