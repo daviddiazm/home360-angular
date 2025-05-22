@@ -5,10 +5,8 @@ import { Component, Input } from '@angular/core';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent {
-
+export class TableComponent  {
   @Input() columns: { key: string, label: string }[] = [];
   @Input() data: any[] = [];
 
-  
 }

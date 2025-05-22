@@ -1,19 +1,21 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Department } from '../models/department.interface';
 import { City } from '../models/city.interface';
+import { Location } from '../models/location.interfaces';
 import { ResponceUsualMessage } from 'src/app/shared/interfaces/responceUsualMessage.interface';
+import { Page } from '../models/page.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
-  private regionBaseUrl = environment.regionUrl;
-  private baseUrl = environment.baseUrl
+  private readonly regionBaseUrl = environment.regionUrl;
+  private readonly baseUrl = environment.baseUrl
 
-  constructor(private http: HttpClient) { }
+  constructor(private readonly http: HttpClient) { }
 
   getDepartments(): Observable<Department[]> {
     const url = `${this.regionBaseUrl}/Department/`
@@ -42,4 +44,13 @@ export class LocationService {
     return this.http.post<ResponceUsualMessage>(url, {sector, municipalityId})
   }
 
+  getPaginatedLocation(page: number, size: number, orderAsc: boolean, name: string): Observable<Page<Location>> {
+    let params = new HttpParams()
+    .set('page', page.toString())
+    .set('size', size.toString())
+    .set('orderAsc', orderAsc.toString())
+    .set('name', name);
+    const url = `${this.baseUrl}/locations/?${params}`
+    return this.http.get<Page<Location>>(url)
+  }
 }

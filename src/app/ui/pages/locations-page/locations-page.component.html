@@ -1,11 +1,12 @@
 <section class="locations">
   <form
-    class=""
-    (ngSubmit)="onSubmit()"
-    action=""
-    [formGroup]="locationForm"
-    *ngIf=" departments$ | async">
+  class=""
+  (ngSubmit)="onSubmit()"
+  action=""
+  [formGroup]="locationForm"
+  *ngIf=" departments$ | async">
 
+    <h2 class="locations__title">Crear ubicaciones</h2>
 
     <app-auto-select
     [required]="true"
@@ -54,4 +55,28 @@
     >
     </app-notification>
   </div>
+  <section class="locations__list">
+    <h2 class="locations__title">Lista de ubicaciones</h2>
+
+    <app-search-sort
+      (searchChange)="onSearch($event)"
+      (sortChange)="onSort($event)">
+    </app-search-sort>
+
+    <section *ngIf="locationsPage$ | async as locationsPage" class="locations__table" >
+      <app-table
+      [columns]="columns"
+      [data]="locationsPage.content"
+      ></app-table>
+
+      <app-pagination-buttons
+      [currentPage]="locationsPage.page"
+      [pageNumbers]="pageNumbers"
+      [totalPages]="locationsPage.totalPages"
+      (pageChange)="onPageCahnge($event)"
+      ></app-pagination-buttons>
+    </section>
+
+
+  </section>
 </section>
