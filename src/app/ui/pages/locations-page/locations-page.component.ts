@@ -150,7 +150,6 @@ export class LocationsPageComponent implements OnInit, OnDestroy {
         for (let i = 0; i < page.totalPages; i++) {
           this.pageNumbers.push(i);
         }
-
         return {
           ...page,
           content: page.content.map(location => ({

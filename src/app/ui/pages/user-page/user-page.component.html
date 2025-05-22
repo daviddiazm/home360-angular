@@ -1,1 +1,74 @@
-<p>user-page works!</p>
+<section class="user-page">
+  <h2 class="user-page__title">Crear Usuario</h2>
+  <form action="" class="user-page__form">
+    <div class="user-page__grid-trhee">
+      <app-input-text
+      [required]="true"
+      label="Identificación"
+      placeholder="12345678"
+      ></app-input-text>
+
+      <app-input-text
+      [required]="true"
+      label="Nombre"
+      placeholder="juan"
+      ></app-input-text>
+
+      <app-input-text
+      [required]="true"
+      label="Apellido"
+      placeholder="perez"
+      ></app-input-text>
+    </div>
+
+    <div class="user-page__grid">
+      <app-input-text
+      [required]="true"
+      label="Número celular"
+      placeholder="+573123099"
+      ></app-input-text>
+
+
+      <app-input-text
+      [required]="true"
+      label="E-mail"
+      placeholder="juan@email.com"
+      ></app-input-text>
+
+      <div class="user-page__field">
+        <label for="birthDay" class="user-page__label">
+          Fecha de Nacimiento
+          <span class="user-page__span">*</span>
+        </label>
+        <input type="date" id="birthDay" name="birthDay" class="user-page__input" />
+      </div>
+
+      <app-auto-select
+      [required]="true"
+      label="Rol"
+      ></app-auto-select>
+
+      <app-input-text
+      [required]="true"
+      label="Contraseña"
+      ></app-input-text>
+
+      <app-input-text
+      [required]="true"
+      label="Confrimar contraseña"
+      ></app-input-text>
+      <!--<div class="user-page__field">
+        <label for="rolUser" class="user-page__label">Rol</label>
+        <select id="rolUser" name="rolUser" class="user-page__input">
+          <option value="1">Administrador</option>
+          <option value="2">Usuario</option>
+        </select>
+      </div> -->
+
+    </div>
+
+    <app-button-submit
+    value="Guardar"
+    ></app-button-submit>
+  </form>
+</section>
