@@ -4,7 +4,7 @@ import { FormUtils } from '../../../shared/utils/form-util';
 import { celphonePattern, emailPattern } from 'src/app/shared/constants/regex';
 import { CustomValidators } from 'src/app/shared/utils/customValidators';
 import { UserService } from '../../../core/services/user.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { UserRequest } from 'src/app/core/models/user.interface';
 import { RolUser } from 'src/app/core/models/rolUser.interfaces';
 

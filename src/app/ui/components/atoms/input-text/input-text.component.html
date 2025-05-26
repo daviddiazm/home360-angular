@@ -1,8 +1,8 @@
 <label class="input-text__label" [ngClass]="{ 'input-text--disabled': disabled }" [for]="label">
-  <h4 class="input-text__label-title">
+  <div class="input-text__label-title">
     {{ label }}
     <span *ngIf="required" class="input-text__required input-text__span">*</span>
-  </h4>
+  </div>
   <input
     class="input-text__input"
     [placeholder]="placeholder"
