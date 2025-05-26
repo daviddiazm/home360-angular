@@ -1,20 +1,26 @@
 <section class="user-page">
   <h2 class="user-page__title">Crear Usuario</h2>
-  <form action="" class="user-page__form">
+  <form action="" class="user-page__form" [formGroup]="userForm" (ngSubmit)="onSave()" >
     <div class="user-page__grid-trhee">
       <app-input-text
+      [errorMessage]="FormUtils.getFiledError(userForm,'identification')"
+      formControlName="identification"
       [required]="true"
       label="Identificación"
       placeholder="12345678"
       ></app-input-text>
 
       <app-input-text
+      [errorMessage]="FormUtils.getFiledError(userForm,'name')"
+      formControlName="name"
       [required]="true"
       label="Nombre"
       placeholder="juan"
       ></app-input-text>
 
       <app-input-text
+      [errorMessage]="FormUtils.getFiledError(userForm,'lastName')"
+      formControlName="lastName"
       [required]="true"
       label="Apellido"
       placeholder="perez"
@@ -23,6 +29,8 @@
 
     <div class="user-page__grid">
       <app-input-text
+      [errorMessage]="FormUtils.getFiledError(userForm,'phoneNumber')"
+      formControlName="phoneNumber"
       [required]="true"
       label="Número celular"
       placeholder="+573123099"
@@ -30,6 +38,8 @@
 
 
       <app-input-text
+      [errorMessage]="FormUtils.getFiledError(userForm,'email')"
+      formControlName="email"
       [required]="true"
       label="E-mail"
       placeholder="juan@email.com"
@@ -40,35 +50,47 @@
           Fecha de Nacimiento
           <span class="user-page__span">*</span>
         </label>
-        <input type="date" id="birthDay" name="birthDay" class="user-page__input" />
+        <input
+          formControlName="birthday"
+          type="date"
+          id="birthDay"
+          name="birthDay"
+          class="user-page__input" />
+          <span class="user-page__span" >{{FormUtils.getFiledError(userForm, 'birthday')}}</span>
       </div>
 
       <app-auto-select
+      [errorMessage]="FormUtils.getFiledError(userForm, 'rol')"
+      formControlName="rol"
       [required]="true"
       label="Rol"
+      [options]="rolNames"
       ></app-auto-select>
 
       <app-input-text
+      [errorMessage]="FormUtils.getFiledError(userForm,'password')"
+      formControlName="password"
       [required]="true"
       label="Contraseña"
       ></app-input-text>
 
       <app-input-text
+      [errorMessage]="FormUtils.getFiledError(userForm,'passwordConfirm')"
+      formControlName="passwordConfirm"
       [required]="true"
       label="Confrimar contraseña"
       ></app-input-text>
-      <!--<div class="user-page__field">
-        <label for="rolUser" class="user-page__label">Rol</label>
-        <select id="rolUser" name="rolUser" class="user-page__input">
-          <option value="1">Administrador</option>
-          <option value="2">Usuario</option>
-        </select>
-      </div> -->
-
     </div>
 
-    <app-button-submit
-    value="Guardar"
-    ></app-button-submit>
+    <span>{{FormUtils.getFiledError(userForm, 'userForm')  }}</span>
+    <div class="user-page__submit">
+      <app-button-submit value="Guardar"></app-button-submit>
+    </div>
   </form>
+  <div *ngIf="saveIsSucces" >
+    <app-notification
+    message="Se guardo exitosamente"
+    ></app-notification>
+  </div>
+
 </section>

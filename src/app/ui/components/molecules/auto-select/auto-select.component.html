@@ -1,5 +1,6 @@
 <section class="select" [ngClass]="{ 'select--disabled': disable }">
   <app-input-text-select
+    [errorMessage]="errorMessage"
     [required]="required"
     [label]="label"
     (focus)="isFocus = true"
