@@ -22,6 +22,8 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
   @Input() label?: string;
   @Input() disable: boolean = false;
   @Input() required: boolean = false;
+  @Input() errorMessage: string | null = '';
+
 
   inputControl = new FormControl('');
   filteredOptions$: Observable<string[]> = of([]);
@@ -83,7 +85,7 @@ export class AutoSelectComponent implements ControlValueAccessor, OnInit, OnChan
     this.isFocus = true;
   }
 
-  // ControlValueAccessor methods
+
   writeValue(value: string): void {
     this.inputControl.setValue(value);
   }
