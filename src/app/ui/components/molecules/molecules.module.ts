@@ -7,6 +7,7 @@ import { AutoSelectComponent } from './auto-select/auto-select.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SearchSortComponent } from './search-sort/search-sort.component';
 import { PaginationButtonsComponent } from './pagination-buttons/pagination-buttons.component';
+import { CardHouseComponent } from './card-house/card-house.component';
 
 
 
@@ -16,7 +17,8 @@ import { PaginationButtonsComponent } from './pagination-buttons/pagination-butt
     ArticleAncordComponent,
     AutoSelectComponent,
     SearchSortComponent,
-    PaginationButtonsComponent
+    PaginationButtonsComponent,
+    CardHouseComponent
   ],
   imports: [
     CommonModule,
