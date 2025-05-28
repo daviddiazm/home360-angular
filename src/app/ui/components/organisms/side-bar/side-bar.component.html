@@ -9,6 +9,14 @@
           <span class="side-bar__label">Dashboard</span>
         </a>
       </li>
+      <li class="side-bar__item" routerLinkActive="side-bar__item--active" [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/casas']" class="side-bar__link" >
+          <span class="side-bar__icon">
+            <img src="assets/icons/houses.svg" alt="Dashboard icon" />
+          </span>
+          <span class="side-bar__label">Ver casas</span>
+        </a>
+      </li>
       <li class="side-bar__item" routerLinkActive="side-bar__item--active" [routerLinkActiveOptions]="{ exact: true }" >
         <a [routerLink]="['/categories']" class="side-bar__link">
           <span class="side-bar__icon">

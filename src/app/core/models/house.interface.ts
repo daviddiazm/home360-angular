@@ -1,50 +1,63 @@
 export interface House {
-  id:                number;
-  name:              string;
-  description:       string;
-  roomsQuantity:     number;
+  id: number;
+  name: string;
+  description: string;
+  roomsQuantity: number;
   bathroomsQuantity: number;
-  address:           string;
-  price:             number;
-  createDate:        Date;
-  publishDate:       Date;
-  category:          Category;
-  location:          Location;
-  publishState:      'PUBLICADA' | "PUBLICACION_PAUSADA" ;
+  address: string;
+  price: number;
+  createDate: Date;
+  publishDate: Date;
+  category: Category;
+  location: Location;
+  publishState: 'PUBLICADA' | "PUBLICACION_PAUSADA";
 }
 
 export interface HouseRequest {
-  name:              string;
-  description:       string;
-  roomsQuantity:     number;
+  name: string;
+  description: string;
+  roomsQuantity: number;
   bathroomsQuantity: number;
-  address:           string;
-  price:             number;
-  createDate:        Date;
-  publishDate:       Date;
-  category:          Category;
-  location:          Location;
+  address: string;
+  price: number;
+  createDate: Date;
+  publishDate: Date;
+  category: Category;
+  location: Location;
+}
+
+
+export interface GetHousesFilter {
+  page: number,
+  size: number,
+  orderAsc: boolean,
+  idLocation: number,
+  idCategory: number,
+  roomsQuantity: number,
+  bathroomsQuantity: number,
+  minPrice: number,
+  maxPrice: number
 }
 
 export interface Category {
-  id:              number;
-  name:            string;
-  description:     string;
-  houses?:         null;
+  id: number;
+  name: string;
+  description: string;
+  houses?: null;
   municipalities?: null;
 }
 
 export interface Location {
-  id:                number;
-  sector:            string;
+  id: number;
+  sector: string;
   municipalityModel: MunicipalityModel;
-  houses:            null;
+  houses: null;
 }
 
 export interface MunicipalityModel {
-  id:              number;
-  name:            string;
-  description:     string;
+  id: number;
+  name: string;
+  description: string;
   departmentModel: Category;
-  locations:       null;
+  locations: null;
 }

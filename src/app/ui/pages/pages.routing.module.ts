@@ -9,12 +9,12 @@ import { LocationsPageComponent } from './locations-page/locations-page.componen
 import { ViewHouseComponent } from './view-house/view-house.component';
 
 const routes: Routes = [
-  // {
-  //   path: "dashboard",
-  //   component: DashboardPageComponent
-  // },
   {
     path: "dashboard",
+    component: DashboardPageComponent
+  },
+  {
+    path: "casas",
     component: ViewHouseComponent
   },
   {
