@@ -6,11 +6,16 @@ import { UserPageComponent } from './user-page/user-page.component';
 import { ConfigurationPageComponent } from './configuration-page/configuration-page.component';
 import { HousingPageComponent } from './housing-page/housing-page.component';
 import { LocationsPageComponent } from './locations-page/locations-page.component';
+import { ViewHouseComponent } from './view-house/view-house.component';
 
 const routes: Routes = [
+  // {
+  //   path: "dashboard",
+  //   component: DashboardPageComponent
+  // },
   {
     path: "dashboard",
-    component: DashboardPageComponent
+    component: ViewHouseComponent
   },
   {
     path: "categories",

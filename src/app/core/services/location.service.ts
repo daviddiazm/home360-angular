@@ -53,4 +53,10 @@ export class LocationService {
     const url = `${this.baseUrl}/locations/?${params}`
     return this.http.get<Page<Location>>(url)
   }
+
+  getLocationsByCityId(cityId : number): Observable<Location[]> {
+    let params = new HttpParams().set('cityId',cityId.toString())
+    const url = `${this.baseUrl}/locations/by-city/?${params}`
+    return this.http.get<Location[]>(url)
+  }
 }

@@ -1,3 +1,122 @@
-<section>
-  
+<section class="house-page">
+  <h2 class="house-page__title">Crear Casa</h2>
+  <form [formGroup]="houseForm" (ngSubmit)="onSave()" class="house-page__form">
+
+    <!-- <div class="house-page__grid-three"> -->
+    <div class="house-page__grid">
+      <app-input-text
+        label="Nombre"
+        placeholder="Casa sur occidente"
+        formControlName="name"
+        [required]="true"
+        [errorMessage]="FormUtils.getFiledError(houseForm, 'name')"
+      ></app-input-text>
+
+      <app-input-text
+        label="Descripción"
+        placeholder="Casa sur-occidente de color azul"
+        formControlName="description"
+        [required]="true"
+        [errorMessage]="FormUtils.getFiledError(houseForm, 'description')"
+      ></app-input-text>
+
+      <app-input-text
+        label="Dirección"
+        placeholder="Cr 48E #1-93"
+        formControlName="address"
+        [required]="true"
+        [errorMessage]="FormUtils.getFiledError(houseForm, 'address')"
+      ></app-input-text>
+
+      <app-input-text
+        label="Cantidad de habitaciones"
+        placeholder="4"
+        formControlName="roomsQuantity"
+        [required]="true"
+        [errorMessage]="FormUtils.getFiledError(houseForm, 'roomsQuantity')"
+        type="number"
+      ></app-input-text>
+
+      <app-input-text
+        label="Cantidad de baños"
+        placeholder="1"
+        formControlName="bathroomsQuantity"
+        [required]="true"
+        [errorMessage]="FormUtils.getFiledError(houseForm, 'bathroomsQuantity')"
+        type="number"
+      ></app-input-text>
+
+      <app-input-text
+        label="Precio"
+        placeholder="220.1"
+        formControlName="price"
+        [required]="true"
+        [errorMessage]="FormUtils.getFiledError(houseForm, 'price')"
+        type="number"
+      ></app-input-text>
+
+      <div class="house-page__field">
+        <label for="publishDate" class="house-page__label">
+          Fecha de publicación
+          <span class="house-page__span">*</span>
+        </label>
+        <input
+          formControlName="publishDate"
+          type="date"
+          id="publishDate"
+          name="publishDate"
+          class="house-page__input"
+        />
+        <span class="house-page__span">
+          {{ FormUtils.getFiledError(houseForm, 'publishDate') }}
+        </span>
+      </div>
+
+      <app-auto-select
+        [required]="true"
+        label="Selecciona la categoria"
+        [options]="categoriesName"
+        placeholder="Selecciona la categoria"
+        formControlName="categoryName"
+        >
+      </app-auto-select>
+
+      <app-auto-select
+      [required]="true"
+      label="Selecciona el departamento"
+      [options]="departmentsName"
+      placeholder="Buscar departamento"
+      formControlName="departementName"
+      ></app-auto-select>
+
+      <app-auto-select
+        [required]="true"
+        label="Selecciona el municipio"
+        [options]="citiesName"
+        placeholder="Buscar departamento"
+        formControlName="cityName"
+        [disable]="!houseForm.get('departementName')?.value"
+        >
+      </app-auto-select>
+
+      <app-auto-select
+        [required]="true"
+        label="Selecciona el ubicacion"
+        [options]="locationsName"
+        placeholder="Buscar ubicacion"
+        formControlName="locationName"
+        [disable]="!houseForm.get('cityName')?.value"
+        >
+      </app-auto-select>
+
+    </div>
+
+    <div class="house-page__submit">
+      <app-button-submit value="Guardar"></app-button-submit>
+    </div>
+
+    <div *ngIf="saveIsSucces">
+      <app-notification message="Se guardó exitosamente"></app-notification>
+    </div>
+  </form>
 </section>
