@@ -20,21 +20,24 @@ export class HouseService {
     return this.http.post<ResponceUsualMessage>(url, hosue)
   }
 
-  getHousesPaginated(request: GetHousesFilter): Observable<Page<House>> {
-    const { page, size, orderAsc, idLocation, idCategory, roomsQuantity, bathroomsQuantity, minPrice, maxPrice } = request
+getHousesPaginated(request: GetHousesFilter): Observable<Page<House>> {
+    const { page, size, orderAsc, cityName, idCategory, roomsQuantity, bathroomsQuantity, minPrice, maxPrice } = request;
+
     let params = new HttpParams()
       .set('page', page.toString())
       .set('size', size.toString())
       .set('orderAsc', orderAsc.toString())
-      .set('idLocation', idLocation.toString())
       .set('idCategory', idCategory.toString())
       .set('roomsQuantity', roomsQuantity.toString())
       .set('bathroomsQuantity', bathroomsQuantity.toString())
       .set('minPrice', minPrice.toString())
-      .set('maxPrice', maxPrice.toString())
-      ;
-    const url = `${this.baseUrl}/house/?${params}`
-    return this.http.get<Page<House>>(url)
-  }
+      .set('maxPrice', maxPrice.toString());
 
+    if (cityName) {
+      params = params.set('cityName', cityName);
+    }
+
+    const url = `${this.baseUrl}/house/by-city-name/`;
+    return this.http.get<Page<House>>(url, { params });
+}
 }

@@ -1,20 +1,21 @@
 .search-sort-container {
   display: flex;
-  margin-bottom: 20px;
   gap: 15px;
   padding: 10px;
-  background: #f8f9fa;
+  background: var(--white);
   border-radius: 8px;
+  margin: 1.5rem 0 1rem;
 
-  .search-box, .sort-box {
+  .search-box,
+  .sort-box {
     display: flex;
     align-items: center;
 
     input {
-      padding: 8px 12px;
+      min-width: 350px;
+      padding: 10px;
       border: 1px solid var(--white-ligth-smoke);
-      border-radius: 4px 0 0 4px;
-      min-width: 250px;
+      border-radius: 8px;
       transition: border-color 0.3s;
 
       &:focus {
@@ -24,7 +25,7 @@
     }
 
     button {
-      padding: 8px ;
+      padding: 8px;
       color: var(--gray);
       cursor: pointer;
 

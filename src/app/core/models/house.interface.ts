@@ -31,7 +31,7 @@ export interface GetHousesFilter {
   page: number,
   size: number,
   orderAsc: boolean,
-  idLocation: number,
+  cityName?: string,
   idCategory: number,
   roomsQuantity: number,
   bathroomsQuantity: number,

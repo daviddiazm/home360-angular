@@ -12,6 +12,7 @@ import { ConfigurationPageComponent } from './configuration-page/configuration-p
 import { HousingPageComponent } from './housing-page/housing-page.component';
 import { UserPageComponent } from './user-page/user-page.component';
 import { MapNameDepartmentPipe } from 'src/app/shared/pipes/department-map-name.pipe';
+import { ViewHouseComponent } from './view-house/view-house.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { MapNameDepartmentPipe } from 'src/app/shared/pipes/department-map-name.
     AppHomeComponent,
     HousingPageComponent,
     UserPageComponent,
-    MapNameDepartmentPipe
+    MapNameDepartmentPipe,
+    ViewHouseComponent
   ],
   imports: [
     PagesRoutingModule,

@@ -1,15 +1,38 @@
 <section class="view-house-page">
 
-  <section class="house-card" >
-    <div class="house-card__img-container" >
-      <img src="../../../../assets/imgs/house_1.jpg" alt="">
+  <section class="view-house-page__filters" >
+    <app-auto-select
+    [options]="categoriesName"
+    placeholder="Categoia"
+    ></app-auto-select>
+    <app-search-sort
+      (searchChange)="onSearch($event)"
+      (sortChange)="onSort($event)">
+    </app-search-sort>
+    <div class="view-house-page__filters-btn">
+      <app-button-submit
+      value="Filtros"
+      ></app-button-submit>
     </div>
-    <section class="house-card__text" >
-      <p>house name</p>
+  </section>
+
+  <section class="view-house-page__list-cards">
+    <section class="house-card" *ngFor="let house of housesList" >
+      <div class="house-card__img-container" >
+        <img src="../../../../assets/imgs/house_1.jpg" alt="">
+      </div>
+      <section class="house-card__info" >
+        <p class="house-card__info__name" > {{house.name}} </p>
+        <p class="house-card__info__city" > {{house.location.municipalityModel.name}} </p>
+        <p class="house-card__info__price" > {{house.price | currency}} </p>
+        <section class="house-card__info__icons" >
+          <p class="house-card__info__rooms" >{{house.roomsQuantity}}</p>
+          <p class="house-card__info__bathrooms" >{{house.bathroomsQuantity}}</p>
+        </section>
+      </section>
     </section>
   </section>
 
-  
+
 
 </section>
-
