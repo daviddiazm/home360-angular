@@ -31,6 +31,49 @@
 }
 
 
+.filter-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.filter-modal {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.filter-modal h2 {
+  margin-top: 0;
+}
+
+.filter-modal label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.filter-modal input {
+  width: 100%;
+  padding: 6px;
+  margin-top: 4px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+
 .house-card {
   height: 350px;
   width: 400px;

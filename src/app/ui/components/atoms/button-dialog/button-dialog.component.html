@@ -1,0 +1,8 @@
+<button
+  (click)="handleClick()"
+  type="button"
+  class="button__submit"
+  [ngClass]="{'button__submit--disabled': disabled}"
+  [disabled]="disabled">
+  {{ value }}
+</button>

@@ -6,6 +6,7 @@ import { ButtonSubmitComponent } from './button-submit/button-submit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AutoSelectComponent } from '../molecules/auto-select/auto-select.component';
 import { InputTextSelectComponent } from './input-text-select/input-text-select.component';
+import { ButtonDialogComponent } from './button-dialog/button-dialog.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { InputTextSelectComponent } from './input-text-select/input-text-select.
     TextAreaComponent,
     ButtonSubmitComponent,
     InputTextSelectComponent,
+    ButtonDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { InputTextSelectComponent } from './input-text-select/input-text-select.
     InputTextComponent,
     TextAreaComponent,
     ButtonSubmitComponent,
-    InputTextSelectComponent
+    InputTextSelectComponent,
+    ButtonDialogComponent
   ]
 })
 export class AtomsModule { }

@@ -1,37 +1,68 @@
 <section class="view-house-page">
 
-  <section class="view-house-page__filters" >
-    <app-auto-select
-    [options]="categoriesName"
-    placeholder="Categoia"
-    ></app-auto-select>
-    <app-search-sort
-      (searchChange)="onSearch($event)"
-      (sortChange)="onSort($event)">
-    </app-search-sort>
-    <div class="view-house-page__filters-btn">
-      <app-button-submit
-      value="Filtros"
-      ></app-button-submit>
-    </div>
-  </section>
+  <form [formGroup]="filterHouseForm" >
+    <section class="view-house-page__filters">
+      <app-auto-select [options]="categoriesName" placeholder="Categoia" formControlName="categoryName" ></app-auto-select>
+      <app-search-sort (searchChange)="onSearch($event)" placeholder="Busaca por ciudad" (sortChange)="onSort($event)">
+      </app-search-sort>
+      <div class="view-house-page__filters-btn">
+        <app-button-dialog (clicked)="openFilterModal()" value="Filtros"></app-button-dialog>
+      </div>
+    </section>
+
+    <section class="filter-modal-backdrop" *ngIf="showDialog" >
+      <div class="filter-modal">
+        <h2>Filtros Avanzados</h2>
+        <label>
+          Habitaciones:
+          <input type="number" formControlName="roomsQuantity" name="roomsQuantity" min="0" />
+        </label>
+
+        <label>
+          Baños:
+          <input type="number" formControlName="bathroomsQuantity" name="bathroomsQuantity" min="0" />
+        </label>
+
+        <label>
+          Precio mínimo:
+          <input type="number" formControlName="minPrice" name="minPrice" min="0" />
+        </label>
+
+        <label>
+          Precio máximo:
+          <input type="number" formControlName="maxPrice" name="maxPrice" min="0" />
+        </label>
+
+        <div class="modal-buttons">
+          <button type="button" (click)="resetAndCloseForm()" >Cancelar</button>
+          <button type="submit" (click)="closeFilterModal()">Aplicar</button>
+        </div>
+      </div>
+    </section>
+  </form>
 
   <section class="view-house-page__list-cards">
-    <section class="house-card" *ngFor="let house of housesList" >
-      <div class="house-card__img-container" >
+    <section class="house-card" *ngFor="let house of housesList">
+      <div class="house-card__img-container">
         <img src="../../../../assets/imgs/house_1.jpg" alt="">
       </div>
-      <section class="house-card__info" >
-        <p class="house-card__info__name" > {{house.name}} </p>
-        <p class="house-card__info__city" > {{house.location.municipalityModel.name}} </p>
-        <p class="house-card__info__price" > {{house.price | currency}} </p>
-        <section class="house-card__info__icons" >
-          <p class="house-card__info__rooms" >{{house.roomsQuantity}}</p>
-          <p class="house-card__info__bathrooms" >{{house.bathroomsQuantity}}</p>
+      <section class="house-card__info">
+        <p class="house-card__info__name"> {{house.name}} </p>
+        <p class="house-card__info__city"> {{house.location.municipalityModel.name}} </p>
+        <p class="house-card__info__price"> {{house.price | currency}} </p>
+        <section class="house-card__info__icons">
+          <p class="house-card__info__rooms">{{house.roomsQuantity}}</p>
+          <p class="house-card__info__bathrooms">{{house.bathroomsQuantity}}</p>
         </section>
       </section>
     </section>
   </section>
+  <app-pagination-buttons
+  [currentPage]="currentPage"
+  [pageNumbers]="pageNumbers"
+  [totalPages]="totalPages"
+  (pageChange)="onPageCahnge($event)"
+  ></app-pagination-buttons>
 
 
 
